@@ -26,4 +26,19 @@ class BlackListData(phone:String, title:String, content:String) : Serializable{
         }
     }
 
+/*
+
+"writer":{
+               "id":2,
+               "login_id":"test123",
+               "name":"테스트",
+               "phone":"01012345678",
+               "memo":"",
+               "category":{
+                  "id":1,
+                  "title":"일반매장",
+                  "color":"#FF0000"
+               }
+ */
+
 }
