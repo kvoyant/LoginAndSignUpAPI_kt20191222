@@ -1,8 +1,9 @@
 package com.yhkim.loginandsignupapi_kt20191222.datas
 
 import org.json.JSONObject
+import java.io.Serializable
 
-class User (id:String, name:String, phone:String){
+class User (id:String, name:String, phone:String) : Serializable{
     var loginId = "" // String 이라고 명시
     var name = ""
     var phoneNum = ""
