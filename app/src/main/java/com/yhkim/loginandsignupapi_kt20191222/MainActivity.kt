@@ -1,5 +1,6 @@
 package com.yhkim.loginandsignupapi_kt20191222
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -24,7 +25,10 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
-
+        postBlackListBtn.setOnClickListener {
+            val intent = Intent(mContext, EditBlackListActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun setValues() {
