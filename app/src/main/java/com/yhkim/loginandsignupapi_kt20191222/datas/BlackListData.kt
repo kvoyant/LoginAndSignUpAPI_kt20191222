@@ -16,7 +16,7 @@ class BlackListData(phone:String, title:String, content:String) : Serializable{
         fun getBlackListDataFromJson(json:JSONObject) : BlackListData {
             val bld = BlackListData() //기본생성자 작성해야 함 (위의 constructor())
 
-            bld.phoneNum = json.getString("Phone_num")
+            bld.phoneNum = json.getString("phone_num")
             bld.content = json.getString("content")
             bld.title = json.getString("title")
 

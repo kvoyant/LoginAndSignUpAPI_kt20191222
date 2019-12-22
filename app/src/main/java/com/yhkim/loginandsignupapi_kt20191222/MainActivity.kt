@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.yhkim.loginandsignupapi_kt20191222.adapters.BlackListAdapter
 import com.yhkim.loginandsignupapi_kt20191222.datas.BlackListData
 import com.yhkim.loginandsignupapi_kt20191222.datas.User
 import com.yhkim.loginandsignupapi_kt20191222.utils.ConnectServer
@@ -13,6 +14,7 @@ import org.json.JSONObject
 class MainActivity : BaseActivity() {
 
     val blackList = ArrayList<BlackListData>()
+    var blackListDataAdapter:BlackListAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +34,9 @@ class MainActivity : BaseActivity() {
         userPhoneTxt.text = user.phoneNum
 
         getBlackListsFromServer()
+
+        blackListDataAdapter = BlackListAdapter(mContext, R.layout.black_list_item, blackList)
+        blackListVIew.adapter = blackListDataAdapter
     }
 
 /*
@@ -60,7 +65,10 @@ class MainActivity : BaseActivity() {
 //                        blackList.add(tempData)
 
                         blackList.add(BlackListData.getBlackListDataFromJson(black_lists.getJSONObject(i)))
+                    }
 
+                    runOnUiThread{
+                        blackListDataAdapter?.notifyDataSetChanged()
                     }
                 }
                 else {
