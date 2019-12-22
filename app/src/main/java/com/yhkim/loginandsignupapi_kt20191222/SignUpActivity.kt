@@ -37,12 +37,19 @@ class SignUpActivity : BaseActivity() {
                     Log.d("회원가입코드","${code}") //200
 
                     runOnUiThread {
+//                        연습문제 : 토스트이 내용을 직접 코딩이 아니라
+//                                 서버에서 내려주는 message 로 뿌려 준다.
+
+                        val message = json.getString("message")
+
                         if(code == 200 ) {
-                            Toast.makeText(mContext, "회원가입 성공 입니다.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(mContext, "${message}", Toast.LENGTH_SHORT).show()
                             finish()
                         }
                         else {
-                            Toast.makeText(mContext, "회원가입 실패 입니다.", Toast.LENGTH_SHORT).show()
+//                            {"code":400,"message":"중복된 유저 아이디가 존재합니다."}
+
+                            Toast.makeText(mContext, "${message}", Toast.LENGTH_SHORT).show()
                         }
                     }
 
