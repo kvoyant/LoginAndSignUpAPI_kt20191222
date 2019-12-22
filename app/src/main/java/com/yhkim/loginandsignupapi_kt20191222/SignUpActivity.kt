@@ -42,15 +42,19 @@ class SignUpActivity : BaseActivity() {
 
                         val message = json.getString("message")
 
+//                        무조건 토스트 띄우고 정상이면 화면을 닫아준다.
+                        Toast.makeText(mContext, "${message}", Toast.LENGTH_SHORT).show()
+
                         if(code == 200 ) {
-                            Toast.makeText(mContext, "${message}", Toast.LENGTH_SHORT).show()
                             finish()
                         }
+/*
                         else {
 //                            {"code":400,"message":"중복된 유저 아이디가 존재합니다."}
 
                             Toast.makeText(mContext, "${message}", Toast.LENGTH_SHORT).show()
                         }
+ */
                     }
 
                 }
