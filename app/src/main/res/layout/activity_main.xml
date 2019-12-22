@@ -27,11 +27,13 @@
             android:text="01023441234"
             android:layout_marginLeft="10dp" />
 
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
     </LinearLayout>
+
+    <ListView
+        android:id="@+id/blackListVIew"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 
 
 </LinearLayout>
