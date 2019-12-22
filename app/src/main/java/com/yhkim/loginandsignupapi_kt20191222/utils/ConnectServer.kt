@@ -61,7 +61,7 @@ class ConnectServer {
 //                    서버요청에 성공하면 응답 내용( String으로 받아서)을 JSON으로 가공
                     val body = response.body()!!.string() //!! 절대 널이 아님
                     val json = JSONObject(body)
-                    handler?.onResponse(json) //handler? 핸들러가 널이 아니면
+                    handler?.onResponse(json) //handler? => 핸들러가 널이 아니면
                 }
 
             })

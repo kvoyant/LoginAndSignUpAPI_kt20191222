@@ -14,6 +14,7 @@
         android:text="ID 입력" />
 
     <EditText
+        android:id="@+id/idEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
@@ -25,6 +26,7 @@
         android:text="비밀번호 입력" />
 
     <EditText
+        android:id="@+id/pwEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
@@ -37,6 +39,7 @@
         android:text="이름 입력" />
 
     <EditText
+        android:id="@+id/nameEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:singleLine="true"
@@ -48,6 +51,7 @@
         android:text="핸드폰번호 입력" />
 
     <EditText
+        android:id="@+id/phoneEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="phone"
@@ -55,6 +59,7 @@
         android:hint="연락처를 입력하세요" />
 
     <Button
+        android:id="@+id/signUpBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="회원가입하기"
