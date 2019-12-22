@@ -37,6 +37,7 @@ class MainActivity : BaseActivity() {
 블랙리스트 목록응답: {"code":200,"message":"블랙리스트 조회 성공","data":{"black_lists":[{"id":2,"phone_num":"01053242152","title":"둘째 게시글","content":"작성해봅니다.","created_at":"2019-09-27 11:36:37","writer":{"id":2,"login_id":"test123","name":"테스트","phone":"01012345678","memo":"","category":{"id":1,"title":"일반매장","color":"#FF0000"},"is_admin":false,"start_date":null,"expire_date":"2019-09-30","created_at":"2019-08-23 17:32:12"}},{"id":1,"phone_num":"01012345678","title":"첫 신고사례","content":"테스트용 게시글입니다.","created_at":"2019-08-26 21:41:48","writer":{"id":1,"login_id":"cho881020","name":"조경진","phone":"01051123237","memo":"ㅇㅇ","category":{"id":3,"title":"식당","color":"#0000FF"},"is_admin":false,"start_date":"2019-11-01","expire_date":"2019-12-31","created_at":"2019-08-23 17:32:12"}}]}}
 * */
 
+
     fun getBlackListsFromServer() {
         ConnectServer.getRequestBlackList(mContext, object : ConnectServer.JsonResponseHandler{
             override fun onResponse(json: JSONObject) {
