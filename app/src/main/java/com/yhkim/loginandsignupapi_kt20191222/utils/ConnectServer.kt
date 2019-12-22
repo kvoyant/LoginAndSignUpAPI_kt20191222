@@ -16,6 +16,37 @@ class ConnectServer {
         //        접속할 서버의 호스트 주소 (BASE_URL)
         val BASE_URL = "http://192.168.0.17:5000"
 
+        fun postRequestLogin(context: Context, id:String, pw:String, handler: JsonResponseHandler?) {
+            val client = OkHttpClient()
+            val url = "${BASE_URL}/auth"
+            val formData = FormBody.Builder()
+                .add("login_id", id)
+                .add("password", pw)
+                .build()
+
+            val request = Request.Builder()
+                .url(url)
+                .post(formData)
+                .build()
+/*
+로그인 응답: {"code":200,"message":"로그인 성공","data":{"user":{"id":32,"login_id":"yhkim","name":"chris","phone":"01012345678","memo":"새 회원","category":{"id":1,"title":"일반매장","color":"#FF0000"},"is_admin":false,"start_date":null,"expire_date":null,"created_at":"2019-12-22 03:18:43"},"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6MzIsImxvZ2luX2lkIjoieWhraW0iLCJwYXNzd29yZCI6IjE4YjUzZjNiYThhMjIwNjRmMTg4OGRjNjJlOTZlYWJjIn0.HU0IDGIHPF2SgD1Xwg_JEy1IKX4i9J5Tyr54U34h2WV0yINVi5JJpOmvl6DR8IZRDLVV9uNwzWW00TUPhuwVKA"}}
+ */
+            client.newCall(request).enqueue(object : Callback{
+                override fun onFailure(call: Call, e: IOException) {
+                    e.printStackTrace()
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+//                    handler?.onResponse(JSONObject(response.body()!!.toString()))
+
+                    val body = response.body()!!.string() //!! 절대 널이 아님
+                    val json = JSONObject(body)
+                    handler?.onResponse(json) //handler? => 핸들러가 널이 아니면
+
+                }
+            })
+        }
+
         //        회원가입 요청 함수 : ? => null 허용
         fun putRequestSignUp(
             context: Context,
