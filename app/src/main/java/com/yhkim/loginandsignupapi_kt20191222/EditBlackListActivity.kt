@@ -36,25 +36,17 @@ class EditBlackListActivity : BaseActivity() {
                     val code = json.getInt("code")
 
                     if(code == 200) {
-                        val data = json.getJSONObject("data")
-                        val user = data.getJSONObject("user")
 
+                        runOnUiThread {
+                            Toast.makeText(mContext,"게시글이 등록 되었습니다.", Toast.LENGTH_SHORT).show()
+                            finish()
+                        }
 
-//                        서버에서 내려주는 토큰
-                        val token = data.getString("token")
-//                        sharedPreference에 반영구 저장
-                        ContextUtil.setUserToken(mContext, token)
-
-                        val intent = Intent(mContext, MainActivity::class.java)
-
-                        //데이터 넘긱기
-                        val userData = User.getUserDataFromJson(user)
-                        intent.putExtra("user", userData)
-
-                        startActivity(intent)
                     }
                     else {
                         val message = json.getString("message")
+
+                        //UI에 영향을 주는 토스트 이므로 꼭 runOnUiThread 해야 한다!
                         runOnUiThread {
                             Toast.makeText(mContext,message, Toast.LENGTH_SHORT).show()
                         }

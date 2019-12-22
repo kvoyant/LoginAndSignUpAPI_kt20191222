@@ -8,6 +8,7 @@ class BlackListData(phone:String, title:String, content:String) : Serializable{
     var phoneNum = phone
     var title = title
     var content = content
+    var writer = User() // 작성자 정보
 
     constructor() : this("폰번모름", "미입력", "미작성")
 
@@ -19,6 +20,7 @@ class BlackListData(phone:String, title:String, content:String) : Serializable{
             bld.phoneNum = json.getString("phone_num")
             bld.content = json.getString("content")
             bld.title = json.getString("title")
+            bld.writer = User.getUserDataFromJson(json.getJSONObject("writer"))
 
             return bld
         }
