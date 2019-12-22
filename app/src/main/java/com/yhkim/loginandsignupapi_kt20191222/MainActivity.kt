@@ -2,6 +2,7 @@ package com.yhkim.loginandsignupapi_kt20191222
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.yhkim.loginandsignupapi_kt20191222.datas.User
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
@@ -17,12 +18,17 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setValues() {
-        val userName = intent.getStringExtra("name")
-        val userId = intent.getStringExtra("id")
-        val userPhone = intent.getStringExtra("phone")
+        val user = intent.getSerializableExtra("user") as User
 
-        userNameAndIdTxt.text = "${userName}( ${userId} )"
-        userPhoneTxt.text = userPhone
+        userNameAndIdTxt.text = "${user.name}( ${user.loginId} )"
+        userPhoneTxt.text = user.phoneNum
+
+//        val userName = intent.getStringExtra("name")
+//        val userId = intent.getStringExtra("id")
+//        val userPhone = intent.getStringExtra("phone")
+
+//        userNameAndIdTxt.text = "${userName}( ${userId} )"
+//        userPhoneTxt.text = userPhone
     }
 
 }

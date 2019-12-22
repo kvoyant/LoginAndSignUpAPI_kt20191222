@@ -41,10 +41,12 @@ class LoginActivity : BaseActivity() {
                         val userData = User.getUserDataFromJson(user)
 
                         val intent = Intent(mContext, MainActivity::class.java)
-//                        intent.putExtra("name", userName)
-                        intent.putExtra("name", userData.name)
-                        intent.putExtra("id", userData.loginId)
-                        intent.putExtra("phone", userData.phoneNum)
+
+                        intent.putExtra()
+//                        intent.putExtra("name", userData.name)//intent.putExtra("name", userName)
+//                        intent.putExtra("id", userData.loginId)
+//                        intent.putExtra("phone", userData.phoneNum)
+
                         startActivity(intent)
                     }
                     else {
