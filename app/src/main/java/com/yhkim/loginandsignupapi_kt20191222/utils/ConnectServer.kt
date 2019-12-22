@@ -16,6 +16,45 @@ class ConnectServer {
         //        접속할 서버의 호스트 주소 (BASE_URL)
         val BASE_URL = "http://192.168.0.17:5000"
 
+
+        fun getRequestBlackList(context: Context, handler: JsonResponseHandler?) {
+            val client = OkHttpClient()
+//            GET 방식 호출은 파라미터를 query에 담는다 => 주소창에 같이 적어주는 방식
+//            url을 만들때 애초에 파라미터도 같이 첨부 해야함
+
+            val urlBuilder = HttpUrl.parse("${BASE_URL}/black_list")!!.newBuilder()
+//            파라미터 첨부한다면 예시..
+//            urlBuilder.addEncodedQueryParameter("파라미터이름","필요변수")
+
+//            URL빌더를 통해 가공된 URL을 실제 String 타입의 url로 변경.
+
+            val url = urlBuilder.build().toString()
+
+//            요청을 날리는 request 생성
+//            GET방식은 제일 기본적인 리퀘스트 => post, put 등와는 다르게 메소드 지정하지 않는다 => 바로 build()로 마무리
+
+            //API가 헤더를 요구한다면 ,request 생성시에 첨부.
+            val request = Request.Builder()
+                .url(url)
+                .header("X-Http-Token", ContextUtil.getUserToken(context))
+                .build()
+
+//            클라이언트를 이용해 서버에 실제 요청
+            client.newCall(request).enqueue(object : Callback{
+                override fun onFailure(call: Call, e: IOException) {
+                    e.printStackTrace()
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+//                    handler?.onResponse(JSONObject(response.body()!!.toString()))
+
+                    val body = response.body()!!.string() //!! 절대 널이 아님
+                    val json = JSONObject(body)
+                    handler?.onResponse(json) //handler? => 핸들러가 널이 아니면
+                }
+            })
+        }
+
         fun postRequestLogin(context: Context, id:String, pw:String, handler: JsonResponseHandler?) {
             val client = OkHttpClient()
             val url = "${BASE_URL}/auth"

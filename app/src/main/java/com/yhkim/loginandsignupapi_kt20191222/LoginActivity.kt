@@ -23,6 +23,9 @@ class LoginActivity : BaseActivity() {
             val inputId = loginEdt.text.toString()
             val inputPw = passwordEdt.text.toString()
 
+/*
+로그인 응답: {"code":200,"message":"로그인 성공","data":{"user":{"id":32,"login_id":"yhkim","name":"chris","phone":"01012345678","memo":"새 회원","category":{"id":1,"title":"일반매장","color":"#FF0000"},"is_admin":false,"start_date":null,"expire_date":null,"created_at":"2019-12-22 03:18:43"},"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6MzIsImxvZ2luX2lkIjoieWhraW0iLCJwYXNzd29yZCI6IjE4YjUzZjNiYThhMjIwNjRmMTg4OGRjNjJlOTZlYWJjIn0.HU0IDGIHPF2SgD1Xwg_JEy1IKX4i9J5Tyr54U34h2WV0yINVi5JJpOmvl6DR8IZRDLVV9uNwzWW00TUPhuwVKA"}}
+ */
             ConnectServer.postRequestLogin(mContext, inputId, inputPw, object: ConnectServer.JsonResponseHandler{
                 override fun onResponse(json: JSONObject) {
 
