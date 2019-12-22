@@ -9,16 +9,19 @@
     tools:context=".EditBlackListActivity">
 
     <EditText
+        android:id="@+id/titleEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:hint="제목을 입력하세요" />
     <EditText
+        android:id="@+id/phoneNumEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="phone"
-        android:text="상대 폰번을 입력하세요" />
+        android:hint="상대 폰번을 입력하세요" />
     <EditText
+        android:id="@+id/contentEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:lines="10"
@@ -26,6 +29,7 @@
         android:hint="신고 내용을 입력하세요" />
 
     <Button
+        android:id="@+id/editBlackListBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="신고 등록" />
